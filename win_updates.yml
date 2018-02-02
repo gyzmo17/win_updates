@@ -1,8 +1,9 @@
 - hosts: all
   roles:
-     - role: deekayen.win_updates
-       vars:
-       win_updates_reboot: true
-       win_updates_category_names:
-         - "CriticalUpdates"
-         - "SecurityUpdates"
+ #    - role: deekayen.win_updates
+ #      vars:
+ #      win_updates_reboot: true
+ #      win_updates_category_names:
+ #        - "CriticalUpdates"
+ #        - "SecurityUpdates"
+      - role: update
