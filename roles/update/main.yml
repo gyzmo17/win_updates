@@ -14,8 +14,14 @@
     register: update_result
   failed_when: win_updates_result.failed is defined and win_updates_result.failed and win_updates_reboot == False
 
+- debug:
+    msg: "update_result =  {{ update_result }} "
+
 - name: "Reboot when updates installed." 
   win_reboot:
     shutdown_timeout_sec: 3600
     reboot_timeout_sec: 3600
   when: update_result.reboot_required
+
+- debug:
+    msg: "update_result.reboot_required =  {{ update_result.reboot_required }} "
