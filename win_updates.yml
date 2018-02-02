@@ -7,3 +7,7 @@
  #        - "CriticalUpdates"
  #        - "SecurityUpdates"
       - role: update
+         win_updates_reboot: true
+         win_updates_category_names:
+            - "CriticalUpdates"
+            - "SecurityUpdates"
