@@ -7,10 +7,13 @@
 #- import_tasks: debian.yml
 #  when: ansible_os_platform|lower == 'debian'
 
-- name: "Install Windows updates."
-  win_updates:
+# apply updates and reboot if necessary
+- win_updates:
     category_names: "{{ win_updates_category_names }}"
-  register: win_updates_result
+    register: update_result
   failed_when: win_updates_result.failed is defined and win_updates_result.failed and win_updates_reboot == False
-
-
+  
+- win_reboot:
+    shutdown_timeout_sec: 3600
+    reboot_timeout_sec: 3600
+  when: update_result.reboot_required
